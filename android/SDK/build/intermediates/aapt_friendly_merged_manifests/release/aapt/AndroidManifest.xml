@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.mob.resu.reandroidsdk" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true" >
+        <receiver
+            android:name="io.mob.resu.reandroidsdk.NotificationActionReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="postmessage" />
+                <action android:name="CustomCTA" />
+                <action android:name="CarouselLeft" />
+                <action android:name="CarouselRight" />
+                <action android:name="notification_cancelled" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="io.mob.resu.reandroidsdk.ReNotificationBroadcastReceiver"
+            android:exported="true" />
+        <receiver
+            android:name="io.mob.resu.reandroidsdk.ScheduleNotification"
+            android:exported="true" >
+        </receiver>
+
+        <service
+            android:name="io.mob.resu.reandroidsdk.AppKillService"
+            android:exported="true"
+            android:stopWithTask="false" />
+
+        <activity
+            android:name="io.mob.resu.reandroidsdk.ReNotificationActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+
+        <receiver
+            android:name="io.mob.resu.reandroidsdk.InstallReferrerReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+                <action android:name="android.intent.action.PACKAGE_FIRST_LAUNCH" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

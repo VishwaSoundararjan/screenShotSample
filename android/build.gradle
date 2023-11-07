@@ -1,0 +1,45 @@
+buildscript {
+    ext.kotlin_version = '1.7.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 21
+    targetSdkVersion = 33
+    compileSdkVersion = 33
+    buildToolsVersion = '33.0.1'
+    logansquare = '1.3.6'
+    resulticks = '2.0.7'
+//    Butterknife...
+    butterKnifeVersion = '8.4.0'
+    butterKnifeAnnotationsVersion = '15.0'
+    supportVersion = "28.0.0"
+    androidXCore = "1.6.0"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ReImage">
+        <attr name="image_identifier" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ReText">
+        <attr name="text_identifier" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ReEditText">
+        <attr name="edit_identifier" format="string" />
+    </declare-styleable>
+
+</resources>
+
